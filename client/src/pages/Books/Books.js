@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Jumbotron from "../components/Jumbotron";
-import DeleteBtn from "../components/DeleteBtn";
-import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import Jumbotron from "../../components/Jumbotron";
+import DeleteBtn from "../../components/DeleteBtn";
+import API from "../../utils/API";
+import { Col, Row, Container } from "../../components/Grid";
+import { List, ListItem } from "../../components/List";
+import { Input, TextArea, FormBtn } from "../../components/Form";
 
 function Books() {
   // Setting our component's initial state
   const [books, setBooks] = useState([])
-  const [formObject, setFormObject] = useState({})
+  const [formObject, setFormObject] = useState({
+    title: "",
+    author: "",
+    synopsis: ""
+  })
 
   // Load all books and store them with setBooks
   useEffect(() => {
@@ -25,6 +29,38 @@ function Books() {
       .catch(err => console.log(err));
   };
 
+  // Deletes a book from the database with a given id, then reloads books from the db
+  function deleteBook(id) {
+    API.deleteBook(id)
+      .then(res => loadBooks())
+      .catch(err => console.log(err));
+  }
+
+  // Handles updating component state when the user types into the input field
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({...formObject, [name]: value})
+  };
+
+  // When the form is submitted, use the API.saveBook method to save the book data
+  // Then reload books from the database
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    if (formObject.title && formObject.author) {
+      API.saveBook({
+        title: formObject.title,
+        author: formObject.author,
+        synopsis: formObject.synopsis
+      })
+        .then(() => setFormObject({
+          title: "",
+          author: "",
+          synopsis: ""
+        }))
+        .then(() => loadBooks())
+        .catch(err => console.log(err));
+    }
+  };
 
     return (
       <Container fluid>
@@ -35,23 +71,26 @@ function Books() {
             </Jumbotron>
             <form>
               <Input
-                onChange={() => {}}
+                onChange={handleInputChange}
                 name="title"
                 placeholder="Title (required)"
+                value={formObject.title}
               />
               <Input
-                onChange={() => {}}
+                onChange={handleInputChange}
                 name="author"
                 placeholder="Author (required)"
+                value={formObject.author}
               />
               <TextArea
-                onChange={() => {}}
+                onChange={handleInputChange}
                 name="synopsis"
                 placeholder="Synopsis (Optional)"
+                value={formObject.synopsis}
               />
               <FormBtn
                 disabled={!(formObject.author && formObject.title)}
-                onClick={() => {}}
+                onClick={handleFormSubmit}
               >
                 Submit Book
               </FormBtn>
@@ -71,7 +110,7 @@ function Books() {
                           {book.title} by {book.author}
                         </strong>
                       </a>
-                      <DeleteBtn onClick={() =>{}} />
+                      <DeleteBtn onClick={() => deleteBook(book._id)} />
                     </ListItem>
                   );
                 })}
