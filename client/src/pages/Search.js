@@ -19,4 +19,20 @@ const handleFormSubmit = (e) => {
       .catch(err => console.log(err))
   }, []);
 
-  
+  return (
+    <React.Fragment>
+      <Container fluid className="text-center bg-info p-5 main-search-container">
+        <h1>React Google Books Search</h1>
+        <h4>Search for a Book</h4>
+        <SearchForm
+          handleInputChange={handleInputChange}
+          handleFormSubmit={handleFormSubmit}
+          search={search}
+        />
+      </Container>
+      <ResultsList results={results} />
+    </React.Fragment>
+  );
+
+
+export default Search;
