@@ -5,9 +5,7 @@ import NavBar from "./components/Navbar/NavBar";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 
-
 const App = () => {
-
   return (
     <React.Fragment>
       <Router>
@@ -17,11 +15,9 @@ const App = () => {
           <Route path="/search" component={Search}></Route>
           <Route path="/saved" component={Saved}></Route>
         </Switch>
-        <Footer />
       </Router>
     </React.Fragment>
   );
-
-}
+};
 
 export default App;
