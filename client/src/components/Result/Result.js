@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, ButtonGroup, Image } from "react-bootstrap";
 import API from "../../utils/API";
-import SaveBtn from "../save/Save";
-import ViewBtn from "../view/View";
+import SaveBtn from "../Save/Save";
+import ViewBtn from "../View/View";
 
 class Result extends React.Component {
   state = {

@@ -1,7 +1,7 @@
   
 import React from 'react';
 import { Container, Card } from 'react-bootstrap';
-import Result from "../result/Result";
+import Result from "../Result/Result";
 
 const ResultsList = (props) => {
   return (
