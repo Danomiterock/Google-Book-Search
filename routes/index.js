@@ -3,9 +3,10 @@ const path = require("path");
 const router = require("express").Router();
 
 const htmlRoutes = require("./html")
+const bookRoutes = require("./books")
 
 // HTML Routes
-router.use("/", htmlRoutes);
+router.use("/", htmlRoutes, bookRoutes);
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
