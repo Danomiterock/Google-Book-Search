@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import SearchForm from "../components/form/Form";
+import SearchForm from "../components/Form/Form";
 import ResultsList from '../components/ResultList/ResultList';
 import axios from 'axios';
 import './pages.css';
