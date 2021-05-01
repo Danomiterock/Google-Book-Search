@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, ButtonGroup, Image, Button } from "react-bootstrap";
+import { Card, ButtonGroup, Image } from "react-bootstrap";
 import API from "../../utils/API";
 import SaveBtn from "../save/Save";
 import ViewBtn from "../view/View";
