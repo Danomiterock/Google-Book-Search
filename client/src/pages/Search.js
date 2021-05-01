@@ -25,9 +25,13 @@ const Search = () => {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     axios
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       .get(baseUrl + search)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       .then(res => setResults(res.data))
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       .catch(err => console.log(err))
   }, []);
 
