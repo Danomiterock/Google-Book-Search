@@ -20,7 +20,7 @@ const Search = () => {
     e.preventDefault();
     axios
       .get(baseUrl + search)
-      .then(res => setResults(res.data))
+      .then(res => setResults(res.data), console.log(res.data))
       .catch(err => console.log(err))
   }
 
@@ -45,8 +45,8 @@ const Search = () => {
           handleFormSubmit={handleFormSubmit}
           search={search}
         />
-      </Container>
       <ResultsList results={results} />
+      </Container>
     </React.Fragment>
   );
 }

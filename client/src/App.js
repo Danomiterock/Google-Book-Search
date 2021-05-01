@@ -7,16 +7,16 @@ import Saved from "./pages/Saved";
 
 const App = () => {
   return (
-    <React.Fragment>
-      <Router>
+    <Router>
+      <React.Fragment>
         <NavBar />
         <Switch>
           <Route exact path="/" component={Search}></Route>
           <Route path="/search" component={Search}></Route>
           <Route path="/saved" component={Saved}></Route>
         </Switch>
-      </Router>
-    </React.Fragment>
+      </React.Fragment>
+    </Router>
   );
 };
 
