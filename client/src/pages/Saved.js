@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, ButtonGroup, Image, Button } from 'react-bootstrap';
 import API from "../utils/API";
-// import SavedContainer from '../components/savedcontainer/SavedContainer'
+import SavedContainer from '../components/SavedContainer/SavedContainer'
 
 
 const Saved = () => {
