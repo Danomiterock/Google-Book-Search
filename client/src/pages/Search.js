@@ -9,7 +9,7 @@ const Search = () => {
   const baseUrl = "https://www.googleapis.com/books/v1/volumes?q=";
 
   const [results, setResults] = useState({ items: [] });
-  const [search, setSearch] = useState("Harry Potter");
+  const [search, setSearch] = useState("Tom Clancy");
 
   const handleInputChange = (e) => {
     const { value } = e.target;
