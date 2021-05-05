@@ -1,21 +1,23 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NavBar from "./components/Navbar/Navbar";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import TopNav from "./components/Navbar/Navbar";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
+import Dummy from "./pages/Dummy";
+import { Container } from "react-bootstrap";
 
 const App = () => {
   return (
     <Router>
-      <React.Fragment>
-        <NavBar />
+      <Container>
+        <TopNav />
         <Switch>
-          <Route exact path="/" component={Search}></Route>
+          <Route exact path="/" component={Dummy}></Route>
           <Route path="/search" component={Search}></Route>
           <Route path="/saved" component={Saved}></Route>
         </Switch>
-      </React.Fragment>
+      </Container>
     </Router>
   );
 };
